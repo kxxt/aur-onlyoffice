@@ -1,0 +1,24 @@
+From e84f64906a7a8e45571c79f69cad9d4b3c8ee466 Mon Sep 17 00:00:00 2001
+From: kxxt <rsworktech@outlook.com>
+Date: Fri, 26 Jul 2024 15:13:13 +0800
+Subject: [PATCH 4/4] Only build tar
+
+---
+ scripts/package_branding.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/package_branding.py b/scripts/package_branding.py
+index ec902e4..18a7cbc 100644
+--- a/scripts/package_branding.py
++++ b/scripts/package_branding.py
+@@ -30,6 +30,6 @@ if utils.is_macos():
+ builder_product_name = "Document Builder"
+ 
+ if utils.is_linux():
+-  desktop_make_targets = ["deb", "rpm", "suse-rpm", "tar"]
++  desktop_make_targets = ["tar"]
+   builder_make_targets = ["deb", "rpm"] # tar
+   server_make_targets = ["deb", "rpm", "tar"]
+-- 
+2.45.2
+
