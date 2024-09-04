@@ -53,7 +53,7 @@ source=(
     "onlyoffice.github.io::git+${_url}/onlyoffice.github.io"
     # V8
     "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773"
-    "git+https://github.com/v8/v8#branch=8.9-lkgr"
+    "git+https://github.com/v8/v8#branch=9.0-lkgr"
     # Patches
     "v8-89-fix-cstdint.diff"
     "0001-Add-update-only-to-avoid-download-and-build-at-once.patch"
