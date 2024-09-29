@@ -37,19 +37,20 @@ options=(
     '!lto'
 )
 _url=https://github.com/ONLYOFFICE
+_tag=v$pkgver.39
 source=(
     # Source
     "git+${_url}/DesktopEditors#tag=v$pkgver"
-    "$pkgname-core::git+${_url}/core"
-    "$pkgname-desktop-apps::git+${_url}/desktop-apps"
-    "$pkgname-desktop-sdk::git+${_url}/desktop-sdk"
-    "$pkgname-dictionaries::git+${_url}/dictionaries"
-    "$pkgname-sdkjs::git+${_url}/sdkjs"
-    "$pkgname-sdkjs-forms::git+${_url}/sdkjs-forms"
-    "$pkgname-web-apps::git+${_url}/web-apps"
-    "$pkgname-build_tools::git+${_url}/build_tools"
-    "$pkgname-core-fonts::git+${_url}/core-fonts"
-    "$pkgname-document-templates::git+${_url}/document-templates"
+    "$pkgname-core::git+${_url}/core#tag=$_tag"
+    "$pkgname-desktop-apps::git+${_url}/desktop-apps#tag=$_tag"
+    "$pkgname-desktop-sdk::git+${_url}/desktop-sdk#tag=$_tag"
+    "$pkgname-dictionaries::git+${_url}/dictionaries#tag=$_tag"
+    "$pkgname-sdkjs::git+${_url}/sdkjs#tag=$_tag"
+    "$pkgname-sdkjs-forms::git+${_url}/sdkjs-forms#tag=$_tag"
+    "$pkgname-web-apps::git+${_url}/web-apps#tag=$_tag"
+    "$pkgname-build_tools::git+${_url}/build_tools#tag=$_tag"
+    "$pkgname-core-fonts::git+${_url}/core-fonts#tag=$_tag"
+    "$pkgname-document-templates::git+${_url}/document-templates#tag=$_tag"
     "onlyoffice.github.io::git+${_url}/onlyoffice.github.io"
     # V8
     "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773"
