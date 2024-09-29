@@ -114,7 +114,7 @@ prepare() {
     patch -Np1 -i ../0004-Only-build-tar.patch
 
     # We manually update the sources, so --update 0
-    ./configure.py --module desktop --update 0 --branch "v$pkgver" --qt-dir "$(realpath tools/linux/system_qt)"
+    ./configure.py --module desktop --update 0 --branch "tags/$_tag" --qt-dir "$(realpath tools/linux/system_qt)"
     ./make.py --update-only
 
     # fetch V8 before updating third party to have a chance to patch it
