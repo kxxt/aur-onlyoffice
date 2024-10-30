@@ -1,24 +1,39 @@
-From e84f64906a7a8e45571c79f69cad9d4b3c8ee466 Mon Sep 17 00:00:00 2001
-From: kxxt <rsworktech@outlook.com>
-Date: Fri, 26 Jul 2024 15:13:13 +0800
-Subject: [PATCH 4/4] Only build tar
+From c457eb459b5401e381e97f8ee68b1f275c9b5ee8 Mon Sep 17 00:00:00 2001
+Message-ID: <c457eb459b5401e381e97f8ee68b1f275c9b5ee8.1730251944.git.rsworktech@outlook.com>
+From: Levi Zim <rsworktech@outlook.com>
+Date: Wed, 30 Oct 2024 09:32:13 +0800
+Subject: [PATCH] Only build tar
 
 ---
- scripts/package_branding.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ scripts/package_branding.py | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
 diff --git a/scripts/package_branding.py b/scripts/package_branding.py
-index ec902e4..18a7cbc 100644
+index 5a83895..9a793c2 100644
 --- a/scripts/package_branding.py
 +++ b/scripts/package_branding.py
-@@ -30,6 +30,6 @@ if utils.is_macos():
- builder_product_name = "Document Builder"
- 
- if utils.is_linux():
--  desktop_make_targets = ["deb", "rpm", "suse-rpm", "tar"]
-+  desktop_make_targets = ["tar"]
-   builder_make_targets = ["deb", "rpm"] # tar
-   server_make_targets = ["deb", "rpm", "tar"]
+@@ -53,21 +53,6 @@ if utils.is_linux():
+       "src": "tar/*.tar*",
+       "dst": "desktop/linux/generic/"
+     },
+-    {
+-      "make": "deb",
+-      "src": "deb/*.deb",
+-      "dst": "desktop/linux/debian/"
+-    },
+-    {
+-      "make": "rpm",
+-      "src": "rpm/build/RPMS/*/*.rpm",
+-      "dst": "desktop/linux/rhel/"
+-    },
+-    {
+-      "make": "rpm-suse",
+-      "src": "rpm-suse/build/RPMS/*/*.rpm",
+-      "dst": "desktop/linux/suse/"
+-    }
+   ]
+   server_make_targets = [
+     {
 -- 
-2.45.2
+2.47.0
 

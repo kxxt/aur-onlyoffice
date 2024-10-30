@@ -2,8 +2,8 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=8.1.1
-pkgrel=2
+pkgver=8.2.0
+pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
 url="https://www.onlyoffice.com/desktop.aspx"
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
     git python
     # build_tools/tools/linux/deps.py
-    nodejs-lts-hydrogen
+    nodejs-lts-iron
     npm
     yarn
     grunt-cli
@@ -37,7 +37,8 @@ options=(
     '!lto'
 )
 _url=https://github.com/ONLYOFFICE
-_tag=v$pkgver.39
+# The tag used for sumodules
+_tag=v8.2.1.1
 source=(
     # Source
     "git+${_url}/DesktopEditors#tag=v$pkgver"
@@ -65,17 +66,17 @@ source=(
     "use-fpermissive.diff"
     "fix-glib-qt-macro-collision.diff"
 )
-sha256sums=('a1c9b834c350d6c8b779f244b5791e08197370702d13ac564fd49ef8e867087a'
-            '09d692f5bcb726e3e69d389897989432f45a5fc8652ea03e95213d493e0756fa'
-            'fcd02e10d6dabfd5f9f3e4849aa257e4f4ab9eeb8468327c8dc6d3ae525faba3'
-            '9055ece3c0afa107aa9ad1bca5743a658e87a12b591a0158e02504c21a161b4b'
-            '1e44d0d8f26f41730b608401cff6a3c86c94a605db94ad624fb4ef194f7891cd'
-            '22ee5275a8769596794349860c196d37d785a843ec89e51aa7f6da7b5837b2be'
-            '72772ef99d783f5cf002afaaad5655d455ff1a0a764464ce7b81a93b6a9a022f'
-            '6faacd37832a87693efc16c47325818cbd379bdbc5e866c3078426af9b13e3dc'
-            '5e5cfac259828e5f3043ca3209761ec35bfeba192d478fef74909dccd1315718'
+sha256sums=('0fb345df9a5f36c3db750a2f0189bd3a82d9c208a6b04154122ade767fe9f46b'
+            '649f4cc007f725a1660262e059e37418e3ec5092a2cf08fbde99ee6cae0af5db'
+            'c78143a88b9f3536ec658cf51f010d833ad71b2249f93421d9470001a5285181'
+            '409058619dfb94d7f861ac0174bc78c1185dac75d9f2093fd2429be51e86dc1d'
+            'a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f'
+            '85e7ffbec48c2bb6569960e87aa6718f787d12356e665b859bdd90d1557133f5'
+            '25c73109bbf2001686b5ed22eb06221968328dab2926086f7f36b6935629af36'
+            '4adc3c252c925aa1bbac4a614b43ae3a5d19034818ed374ffbf81c97081a2aa9'
+            '520849b85fae25d9c5442fad5407d971907caf6e21f8adc678beb29533c73513'
             '3724102cfeeb1fde8f86ae767b14eaa672ca43ec472d87321c84cc1ce18189d1'
-            '87af534eac1847f38b09025bce75e491292069a6ef987937d9c22e8b0679df4a'
+            '34d0505c7c77d56a3da63fc3f4c77516f639b8b18eb89a8fbf0ca4d96f9930b4'
             'SKIP'
             'cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe'
             'SKIP'
@@ -83,7 +84,7 @@ sha256sums=('a1c9b834c350d6c8b779f244b5791e08197370702d13ac564fd49ef8e867087a'
             'a4f2502acfdc48d3daad5ed166c1cd15cb0595a4d5018f22d9390f73f25dd8c6'
             'e9d56d030039ad72e89dc48877f7fccaeac4cfa5ff584833849be2601fca5fb7'
             'bdcf095fd46fb47f2992510078c46cef2b0084000ff4a0c4f956efb0db7e4d57'
-            '5a10b6e1b71e79f73344d3f2c7bc1611940986e331d0b41bd294bf5c84328633'
+            '0f7acc17b78eaeb338f098088ee11356045a53af6698c79ada45fa261c8d18fe'
             '005951c1b8a281148a3a7e79261c728c4d80ff2c580e278e823a84c8751916f9'
             '222dab12468f27b2bc1cc098ad2e4ca5bff8df845939f5cba2efff2165eafbcd'
             'bd655f04eb044f19da779911eb7ad6fd13c899a659720fbcf08f38194365669c')
@@ -168,7 +169,7 @@ EOF
 }
 
 build() {
-	cd build_tools
+    cd build_tools
     local qt_ver="$(pacman -Q qt5-base | awk '{print $2}')"
     export QT_VERSION="${qt_ver//+*}"
 
@@ -187,24 +188,17 @@ build() {
 package() {
     cd build_tools
     ./make_package.py -P linux_x86_64 -T desktop -V "$pkgver" -B "$pkgrel"
-	cd ../desktop-apps/win-linux/package/linux/common
+    cd ../desktop-apps/win-linux/package/linux/tar
+    tar xf onlyoffice-desktopeditors-"$pkgver"-"$pkgrel"-"$CARCH".tar.xz
+    rm -f *.tar.xz
 
     install -d "$pkgdir"/opt/onlyoffice
     cp -r usr "$pkgdir"
     chmod +x "$pkgdir"/usr/bin/*
-    cp -r opt/desktopeditors "$pkgdir"/opt/onlyoffice
-    # Remove template files
-    find  $pkgdir -name '*.m4' -type f -exec rm {} \;
+    # Symlink for backward compatibility
+    ln -s onlyoffice-desktopeditors "$pkgdir"/usr/bin/desktopeditors
+    cp -r opt "$pkgdir"
 
-    local _file
-    local _res
-    while read -r -d '' _file
-    do
-        _res="$(sed 's/\.png$//;s/^.*-//' <<< "$_file")"
-        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
-        ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/onlyoffice-desktopeditors.png"
-    done < <(find "${pkgdir}/opt/onlyoffice/desktopeditors" -maxdepth 1 -type f -name 'asc-de-*.png' -print0)
     # We are using system Qt5 and icu
     rm "$pkgdir"/opt/onlyoffice/desktopeditors/libQt5*
     rm "$pkgdir"/opt/onlyoffice/desktopeditors/libicu*
