@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=8.2.0
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
@@ -38,7 +38,7 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v8.2.1.1
+_tag=v8.3.0.98
 source=(
     # Source
     "git+${_url}/DesktopEditors#tag=v$pkgver"
@@ -66,17 +66,17 @@ source=(
     "use-fpermissive.diff"
     "fix-glib-qt-macro-collision.diff"
 )
-sha256sums=('0fb345df9a5f36c3db750a2f0189bd3a82d9c208a6b04154122ade767fe9f46b'
-            '649f4cc007f725a1660262e059e37418e3ec5092a2cf08fbde99ee6cae0af5db'
-            'c78143a88b9f3536ec658cf51f010d833ad71b2249f93421d9470001a5285181'
-            '409058619dfb94d7f861ac0174bc78c1185dac75d9f2093fd2429be51e86dc1d'
+sha256sums=('019b3d3d272caad4625ee02ab3fd05571aae6693c6371df7e7ec236505d17924'
+            '4f19f678d56765171d9dab8b208459de4daaf6ef27a15f2be723ce94d8d7a73e'
+            '408354de764a2234ab1a5f3af43a7fb798b471fe9ef6eaecdbcad58e43b7bdaf'
+            '335aad7db475536c522d05018034f34b658be70a5da38892c684628f1eb0e3c5'
             'a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f'
-            '85e7ffbec48c2bb6569960e87aa6718f787d12356e665b859bdd90d1557133f5'
-            '25c73109bbf2001686b5ed22eb06221968328dab2926086f7f36b6935629af36'
-            '4adc3c252c925aa1bbac4a614b43ae3a5d19034818ed374ffbf81c97081a2aa9'
-            '520849b85fae25d9c5442fad5407d971907caf6e21f8adc678beb29533c73513'
+            '549003f7b51d65f0b55dfdcb71f85acde1c97f53275bab225ba30d63d83a797a'
+            'b01476f7bb278270c22046cc19c02f1e78d21d73055155cd03ed7aa69c0fa50d'
+            '5b0fdea5f7df331a87d1928b603ebafc6656d6e0b79527328edc5c19fb441956'
+            '235ef1a2ecbe38573eb63b46428b97f9310634f0ccd7a676395704853cdf81bd'
             '3724102cfeeb1fde8f86ae767b14eaa672ca43ec472d87321c84cc1ce18189d1'
-            '34d0505c7c77d56a3da63fc3f4c77516f639b8b18eb89a8fbf0ca4d96f9930b4'
+            '8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350'
             'SKIP'
             'cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe'
             'SKIP'
@@ -116,6 +116,8 @@ prepare() {
     patch -Np1 -i ../0003-use-QT_VERSION-env-instead-of-guessing.patch
     # Don't build debs/rpm/..
     patch -Np1 -i ../0004-Only-build-tar.patch
+    # Use https when download CEF
+    sed -i 's|http://|https://|' ./scripts/core_common/modules/cef.py
 
     # We manually update the sources, so --update 0
     ./configure.py --module desktop --update 0 --branch "tags/$_tag" --qt-dir "$(realpath tools/linux/system_qt)"
