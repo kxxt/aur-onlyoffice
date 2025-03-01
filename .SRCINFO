@@ -1,6 +1,6 @@
 pkgbase = onlyoffice
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
-	pkgver = 8.3.0
+	pkgver = 8.3.1
 	pkgrel = 1
 	url = https://www.onlyoffice.com/desktop.aspx
 	arch = x86_64
@@ -37,21 +37,22 @@ pkgbase = onlyoffice
 	optdepends = libreoffice: for OpenSymbol fonts
 	optdepends = otf-takao: for japanese Takao fonts
 	optdepends = ttf-ms-fonts: for Microsoft fonts
+	optdepends = gst-plugins-good: for playing embedded video files
 	conflicts = onlyoffice-bin
 	conflicts = onlyoffice-git
 	options = !emptydirs
 	options = !lto
-	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v8.3.0
-	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v8.3.0.98
-	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v8.3.0.98
-	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v8.3.0.98
-	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v8.3.0.98
-	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v8.3.0.98
-	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v8.3.0.98
-	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v8.3.0.98
-	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v8.3.0.98
-	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v8.3.0.98
-	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v8.3.0.98
+	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v8.3.1
+	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v8.3.1.28
+	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v8.3.1.28
+	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v8.3.1.28
+	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v8.3.1.28
+	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v8.3.1.28
+	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v8.3.1.28
+	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v8.3.1.28
+	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v8.3.1.28
+	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v8.3.1.28
+	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v8.3.1.28
 	source = onlyoffice.github.io::git+https://github.com/ONLYOFFICE/onlyoffice.github.io
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773
 	source = git+https://github.com/v8/v8#branch=9.0-lkgr
@@ -63,15 +64,15 @@ pkgbase = onlyoffice
 	source = 0001-Fix-boost-module-import.patch
 	source = use-fpermissive.diff
 	source = fix-glib-qt-macro-collision.diff
-	sha256sums = 019b3d3d272caad4625ee02ab3fd05571aae6693c6371df7e7ec236505d17924
-	sha256sums = 4f19f678d56765171d9dab8b208459de4daaf6ef27a15f2be723ce94d8d7a73e
-	sha256sums = 408354de764a2234ab1a5f3af43a7fb798b471fe9ef6eaecdbcad58e43b7bdaf
-	sha256sums = 335aad7db475536c522d05018034f34b658be70a5da38892c684628f1eb0e3c5
+	sha256sums = c119eb2ffea91cef5666e37dfea27c6e23c6c0d6631731af7424a71cfa44fc28
+	sha256sums = 552b6c136182136b5cec23b1a0029f260a4b847cec3dcdbc7dd5367b982b258c
+	sha256sums = b3e4db9e44dd953e7939f16d6f3bdb9d97d59bf1c09f56b1303ced34f2157b6e
+	sha256sums = 70d26927afb09f78a44878ddfe66709d27c34456cab337d35812177894748763
 	sha256sums = a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f
-	sha256sums = 549003f7b51d65f0b55dfdcb71f85acde1c97f53275bab225ba30d63d83a797a
-	sha256sums = b01476f7bb278270c22046cc19c02f1e78d21d73055155cd03ed7aa69c0fa50d
-	sha256sums = 5b0fdea5f7df331a87d1928b603ebafc6656d6e0b79527328edc5c19fb441956
-	sha256sums = 235ef1a2ecbe38573eb63b46428b97f9310634f0ccd7a676395704853cdf81bd
+	sha256sums = 6f2d3172a18cf6dc141f53d2e64d34c3a33de4ade76c4aae9ff0e6f2c06bae9a
+	sha256sums = 440d2f228d824219b2c50aaa5f6d5ed39bccab5cf5caafcdc684c98400483be4
+	sha256sums = 5257eb41517b679a0f54a819ce17992f067cdde4999f81effce3b77dca3d300d
+	sha256sums = 20da971848801e6d0b95d50228d83ac9a3ee64ceb3dd8a88d5bc6563d6d6db4f
 	sha256sums = 3724102cfeeb1fde8f86ae767b14eaa672ca43ec472d87321c84cc1ce18189d1
 	sha256sums = 8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350
 	sha256sums = SKIP

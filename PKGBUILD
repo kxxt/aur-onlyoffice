@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=8.3.0
+pkgver=8.3.1
 pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
@@ -30,7 +30,8 @@ makedepends=(
 )
 optdepends=('libreoffice: for OpenSymbol fonts'
             'otf-takao: for japanese Takao fonts'
-            'ttf-ms-fonts: for Microsoft fonts')
+            'ttf-ms-fonts: for Microsoft fonts'
+            'gst-plugins-good: for playing embedded video files')
 conflicts=(onlyoffice-bin onlyoffice-git)
 options=(
     '!emptydirs'
@@ -38,7 +39,7 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v8.3.0.98
+_tag=v8.3.1.28
 source=(
     # Source
     "git+${_url}/DesktopEditors#tag=v$pkgver"
@@ -66,15 +67,15 @@ source=(
     "use-fpermissive.diff"
     "fix-glib-qt-macro-collision.diff"
 )
-sha256sums=('019b3d3d272caad4625ee02ab3fd05571aae6693c6371df7e7ec236505d17924'
-            '4f19f678d56765171d9dab8b208459de4daaf6ef27a15f2be723ce94d8d7a73e'
-            '408354de764a2234ab1a5f3af43a7fb798b471fe9ef6eaecdbcad58e43b7bdaf'
-            '335aad7db475536c522d05018034f34b658be70a5da38892c684628f1eb0e3c5'
+sha256sums=('c119eb2ffea91cef5666e37dfea27c6e23c6c0d6631731af7424a71cfa44fc28'
+            '552b6c136182136b5cec23b1a0029f260a4b847cec3dcdbc7dd5367b982b258c'
+            'b3e4db9e44dd953e7939f16d6f3bdb9d97d59bf1c09f56b1303ced34f2157b6e'
+            '70d26927afb09f78a44878ddfe66709d27c34456cab337d35812177894748763'
             'a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f'
-            '549003f7b51d65f0b55dfdcb71f85acde1c97f53275bab225ba30d63d83a797a'
-            'b01476f7bb278270c22046cc19c02f1e78d21d73055155cd03ed7aa69c0fa50d'
-            '5b0fdea5f7df331a87d1928b603ebafc6656d6e0b79527328edc5c19fb441956'
-            '235ef1a2ecbe38573eb63b46428b97f9310634f0ccd7a676395704853cdf81bd'
+            '6f2d3172a18cf6dc141f53d2e64d34c3a33de4ade76c4aae9ff0e6f2c06bae9a'
+            '440d2f228d824219b2c50aaa5f6d5ed39bccab5cf5caafcdc684c98400483be4'
+            '5257eb41517b679a0f54a819ce17992f067cdde4999f81effce3b77dca3d300d'
+            '20da971848801e6d0b95d50228d83ac9a3ee64ceb3dd8a88d5bc6563d6d6db4f'
             '3724102cfeeb1fde8f86ae767b14eaa672ca43ec472d87321c84cc1ce18189d1'
             '8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350'
             'SKIP'
