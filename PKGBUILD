@@ -56,7 +56,7 @@ source=(
     "onlyoffice.github.io::git+${_url}/onlyoffice.github.io"
     # V8
     "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773"
-    "git+https://github.com/v8/v8#branch=9.0-lkgr"
+    "git+https://github.com/v8/v8#tag=9.0.257.43" # 9.0-lkgr
     # Patches
     "v8-89-fix-cstdint.diff"
     "0001-Add-update-only-to-avoid-download-and-build-at-once.patch"
@@ -80,7 +80,7 @@ sha256sums=('c119eb2ffea91cef5666e37dfea27c6e23c6c0d6631731af7424a71cfa44fc28'
             '8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350'
             'SKIP'
             'cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe'
-            'SKIP'
+            '8cd5a305b9ce85066094963a5d28ad221f9598b9e98e569bf47c61f570c2988b'
             '36e4855625bf3eaab293208478492393fb4e8f0f1076fac06df56ca828319ffc'
             'a4f2502acfdc48d3daad5ed166c1cd15cb0595a4d5018f22d9390f73f25dd8c6'
             'e9d56d030039ad72e89dc48877f7fccaeac4cfa5ff584833849be2601fca5fb7'
