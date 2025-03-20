@@ -2,8 +2,8 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=8.3.1
-pkgrel=2
+pkgver=8.3.2
+pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
 url="https://www.onlyoffice.com/desktop.aspx"
@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
     git python
+    dos2unix
     # build_tools/tools/linux/deps.py
     nodejs-lts-iron
     npm
@@ -39,7 +40,9 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v8.3.1.28
+_tag=v8.3.2.23
+_icu_major=58
+_icu_minor=3
 source=(
     # Source
     "git+${_url}/DesktopEditors#tag=v$pkgver"
@@ -57,6 +60,8 @@ source=(
     # V8
     "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773"
     "git+https://github.com/v8/v8#tag=9.0.257.43" # 9.0-lkgr
+    # ICU -- Keep in Sync with build_tools/scripts/core_common/modules/icu.py 
+    "git+https://github.com/unicode-org/icu.git#tag=release-$_icu_major-$_icu_minor"
     # Patches
     "v8-89-fix-cstdint.diff"
     "0001-Add-update-only-to-avoid-download-and-build-at-once.patch"
@@ -66,21 +71,23 @@ source=(
     "0001-Fix-boost-module-import.patch"
     "use-fpermissive.diff"
     "fix-glib-qt-macro-collision.diff"
+    "fix-limits-include.diff"
 )
-sha256sums=('c119eb2ffea91cef5666e37dfea27c6e23c6c0d6631731af7424a71cfa44fc28'
-            '552b6c136182136b5cec23b1a0029f260a4b847cec3dcdbc7dd5367b982b258c'
-            'b3e4db9e44dd953e7939f16d6f3bdb9d97d59bf1c09f56b1303ced34f2157b6e'
-            '70d26927afb09f78a44878ddfe66709d27c34456cab337d35812177894748763'
+sha256sums=('0d77139269435f68577edc8d4bc7d5b61f6e0991cc78ebeef90110210aea66dd'
+            '292dbfb3174ffd89d5ffa3c1348f2e0c2b003807d87d6f22bdfae5ceef1da1c5'
+            '465bc2b80d11d479146f480bedd32ac67632a65eeec004612b08050d5a33fa14'
+            'bfeb1cd335887609adc1e07da5e3a334ee951940b0c1dbf166f7c78ba0d888bc'
             'a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f'
-            '6f2d3172a18cf6dc141f53d2e64d34c3a33de4ade76c4aae9ff0e6f2c06bae9a'
-            '440d2f228d824219b2c50aaa5f6d5ed39bccab5cf5caafcdc684c98400483be4'
-            '5257eb41517b679a0f54a819ce17992f067cdde4999f81effce3b77dca3d300d'
-            '20da971848801e6d0b95d50228d83ac9a3ee64ceb3dd8a88d5bc6563d6d6db4f'
+            '00a87f9de497a35cfa20fda99b65bd92636a1421d1e907f1d804985c4e69569f'
+            '9844562dfec7c4ddd98731bbb319bc611754bdadade773464063f8499b9355cb'
+            '747c4aceb99479fb33978d56fd159dc8301779536c5e3d5b1157c0c9cf92c924'
+            '36d88736976baf6ed9150c028940c1ffbd1af47d31caa4517cc7aaca423ab509'
             '3724102cfeeb1fde8f86ae767b14eaa672ca43ec472d87321c84cc1ce18189d1'
             '8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350'
             'SKIP'
             'cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe'
             '8cd5a305b9ce85066094963a5d28ad221f9598b9e98e569bf47c61f570c2988b'
+            '26127ef7a53f1343b36bd5da678663b78dbef81f9d22ed416555e853f55dfc4c'
             '36e4855625bf3eaab293208478492393fb4e8f0f1076fac06df56ca828319ffc'
             'a4f2502acfdc48d3daad5ed166c1cd15cb0595a4d5018f22d9390f73f25dd8c6'
             'e9d56d030039ad72e89dc48877f7fccaeac4cfa5ff584833849be2601fca5fb7'
@@ -88,7 +95,8 @@ sha256sums=('c119eb2ffea91cef5666e37dfea27c6e23c6c0d6631731af7424a71cfa44fc28'
             '0f7acc17b78eaeb338f098088ee11356045a53af6698c79ada45fa261c8d18fe'
             '95e107a7c2a895866e8a1d4c89bb4dbed50027fff9e5b9ab513c556537554eef'
             '222dab12468f27b2bc1cc098ad2e4ca5bff8df845939f5cba2efff2165eafbcd'
-            'bd655f04eb044f19da779911eb7ad6fd13c899a659720fbcf08f38194365669c')
+            'bd655f04eb044f19da779911eb7ad6fd13c899a659720fbcf08f38194365669c'
+            'cb87384ce721ac15a82d254efe8662be0eb9011c122edfcb1caa07194fbae697')
 
 prepare() {
     for _module in core desktop-{apps,sdk} dictionaries sdkjs{,-forms} \
@@ -96,6 +104,7 @@ prepare() {
     do
         mv "$pkgname-${_module}" "${_module}"
     done
+    cp -r icu/icu4c core/Common/3dParty/icu/icu
     cd "$srcdir/build_tools"/tools/linux
 
     # Pretend that we have all dependencies installed
@@ -151,6 +160,8 @@ EOF
     cd "$srcdir"
     # Fix some compile error
     patch -Np1 -d core < use-fpermissive.diff
+    dos2unix core/Common/OfficeFileFormatChecker2.cpp
+    patch -Np0 -d core < fix-limits-include.diff
     patch -Np1 -d desktop-apps < fix-glib-qt-macro-collision.diff
     # patch -Np1 -d desktop-apps < package-add-dir-target.diff
     # pragma (end)?region breaks if-else-if. Is this a gcc bug?
