@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=8.3.2
+pkgver=8.3.3
 pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
@@ -40,7 +40,7 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v8.3.2.23
+_tag=v8.3.3.23
 _icu_major=58
 _icu_minor=3
 source=(
@@ -73,16 +73,16 @@ source=(
     "fix-glib-qt-macro-collision.diff"
     "fix-limits-include.diff"
 )
-sha256sums=('0d77139269435f68577edc8d4bc7d5b61f6e0991cc78ebeef90110210aea66dd'
-            '292dbfb3174ffd89d5ffa3c1348f2e0c2b003807d87d6f22bdfae5ceef1da1c5'
-            '465bc2b80d11d479146f480bedd32ac67632a65eeec004612b08050d5a33fa14'
-            'bfeb1cd335887609adc1e07da5e3a334ee951940b0c1dbf166f7c78ba0d888bc'
+sha256sums=('4d987160ccc966f4049be3f8c2dcf5a9f5d3b941f880408a80772e04bb593b2e'
+            '016401fe7c32d6f1c8499e03300d4f2c9e35b80a4c8f272f5eef37644a99a802'
+            '996e04f7fa654b20ada92244cd1944060e5cc7edf5c17b8c0d3a408c02ff3485'
+            '5fce3ea026434e53f5b66a9b56377d7eb8226c10f09cfd6a468f7a98d80eeba6'
             'a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f'
-            '00a87f9de497a35cfa20fda99b65bd92636a1421d1e907f1d804985c4e69569f'
-            '9844562dfec7c4ddd98731bbb319bc611754bdadade773464063f8499b9355cb'
-            '747c4aceb99479fb33978d56fd159dc8301779536c5e3d5b1157c0c9cf92c924'
-            '36d88736976baf6ed9150c028940c1ffbd1af47d31caa4517cc7aaca423ab509'
-            '3724102cfeeb1fde8f86ae767b14eaa672ca43ec472d87321c84cc1ce18189d1'
+            '21b75f1026838e88a663fc429239db67d0357342c48eac64f89b72cdc2e0f8e5'
+            'ce7d8ee17bcef34c4f7c6559ec9d76d22272fe80213cca8c9fa44fcc156c87f7'
+            'eb2c5dd0b5df70b9a393f0d0ea12bf3cfbcf10864ad972ed1b24fea22be62441'
+            'c1e10fa642f849fe5192f899ac73e180d8428338fecc4345201f48538de5ec3a'
+            '55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720'
             '8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350'
             'SKIP'
             'cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe'

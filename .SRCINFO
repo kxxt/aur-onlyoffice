@@ -1,6 +1,6 @@
 pkgbase = onlyoffice
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
-	pkgver = 8.3.2
+	pkgver = 8.3.3
 	pkgrel = 1
 	url = https://www.onlyoffice.com/desktop.aspx
 	arch = x86_64
@@ -43,17 +43,17 @@ pkgbase = onlyoffice
 	conflicts = onlyoffice-git
 	options = !emptydirs
 	options = !lto
-	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v8.3.2
-	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v8.3.2.23
-	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v8.3.2.23
-	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v8.3.2.23
-	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v8.3.2.23
-	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v8.3.2.23
-	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v8.3.2.23
-	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v8.3.2.23
-	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v8.3.2.23
-	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v8.3.2.23
-	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v8.3.2.23
+	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v8.3.3
+	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v8.3.3.23
+	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v8.3.3.23
+	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v8.3.3.23
+	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v8.3.3.23
+	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v8.3.3.23
+	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v8.3.3.23
+	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v8.3.3.23
+	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v8.3.3.23
+	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v8.3.3.23
+	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v8.3.3.23
 	source = onlyoffice.github.io::git+https://github.com/ONLYOFFICE/onlyoffice.github.io
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773
 	source = git+https://github.com/v8/v8#tag=9.0.257.43
@@ -67,16 +67,16 @@ pkgbase = onlyoffice
 	source = use-fpermissive.diff
 	source = fix-glib-qt-macro-collision.diff
 	source = fix-limits-include.diff
-	sha256sums = 0d77139269435f68577edc8d4bc7d5b61f6e0991cc78ebeef90110210aea66dd
-	sha256sums = 292dbfb3174ffd89d5ffa3c1348f2e0c2b003807d87d6f22bdfae5ceef1da1c5
-	sha256sums = 465bc2b80d11d479146f480bedd32ac67632a65eeec004612b08050d5a33fa14
-	sha256sums = bfeb1cd335887609adc1e07da5e3a334ee951940b0c1dbf166f7c78ba0d888bc
+	sha256sums = 4d987160ccc966f4049be3f8c2dcf5a9f5d3b941f880408a80772e04bb593b2e
+	sha256sums = 016401fe7c32d6f1c8499e03300d4f2c9e35b80a4c8f272f5eef37644a99a802
+	sha256sums = 996e04f7fa654b20ada92244cd1944060e5cc7edf5c17b8c0d3a408c02ff3485
+	sha256sums = 5fce3ea026434e53f5b66a9b56377d7eb8226c10f09cfd6a468f7a98d80eeba6
 	sha256sums = a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f
-	sha256sums = 00a87f9de497a35cfa20fda99b65bd92636a1421d1e907f1d804985c4e69569f
-	sha256sums = 9844562dfec7c4ddd98731bbb319bc611754bdadade773464063f8499b9355cb
-	sha256sums = 747c4aceb99479fb33978d56fd159dc8301779536c5e3d5b1157c0c9cf92c924
-	sha256sums = 36d88736976baf6ed9150c028940c1ffbd1af47d31caa4517cc7aaca423ab509
-	sha256sums = 3724102cfeeb1fde8f86ae767b14eaa672ca43ec472d87321c84cc1ce18189d1
+	sha256sums = 21b75f1026838e88a663fc429239db67d0357342c48eac64f89b72cdc2e0f8e5
+	sha256sums = ce7d8ee17bcef34c4f7c6559ec9d76d22272fe80213cca8c9fa44fcc156c87f7
+	sha256sums = eb2c5dd0b5df70b9a393f0d0ea12bf3cfbcf10864ad972ed1b24fea22be62441
+	sha256sums = c1e10fa642f849fe5192f899ac73e180d8428338fecc4345201f48538de5ec3a
+	sha256sums = 55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720
 	sha256sums = 8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350
 	sha256sums = SKIP
 	sha256sums = cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe
