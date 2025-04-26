@@ -3,7 +3,7 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
 pkgver=8.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
 url="https://www.onlyoffice.com/desktop.aspx"
@@ -177,8 +177,6 @@ EOF
     sed -i '1s/^/#include<QPainterPath>\n/' desktop-apps/win-linux/src/windows/platform_linux/cwindowplatform.cpp
 
     cd "$srcdir/build_tools"
-    unset CFLAGS
-    unset CXXFLAGS
     ./make.py --update-third-party-only
 }
 
@@ -192,9 +190,8 @@ build() {
     # -O2 causes a linker segfault during LTO
     export CFLAGS="${CFLAGS/-O2/}"
     export CXXFLAGS="${CXXFLAGS/-O2/}"
-    # TODO: figure out which flag is causing linker error
-    unset CFLAGS
-    unset CXXFLAGS
+    # GLIBCXX_ASSERTIONS causes undefined symbols during linking
+    export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
 
     ./make.py --no-third-party-update
 }

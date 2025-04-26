@@ -1,7 +1,7 @@
 pkgbase = onlyoffice
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
 	pkgver = 8.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.onlyoffice.com/desktop.aspx
 	arch = x86_64
 	license = AGPL-3.0-only
