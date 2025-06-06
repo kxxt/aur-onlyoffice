@@ -1,3 +1,15 @@
+diff --git a/include/cppgc/heap-statistics.h b/include/cppgc/heap-statistics.h
+index cf8d6633cc2..fa0c9194848 100644
+--- a/include/cppgc/heap-statistics.h
++++ b/include/cppgc/heap-statistics.h
+@@ -5,6 +5,7 @@
+ #ifndef INCLUDE_CPPGC_HEAP_STATISTICS_H_
+ #define INCLUDE_CPPGC_HEAP_STATISTICS_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
 diff --git a/src/base/logging.h b/src/base/logging.h
 index fe39f988225..7c774ed30ad 100644
 --- a/src/base/logging.h

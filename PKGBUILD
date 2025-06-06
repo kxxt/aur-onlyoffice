@@ -3,7 +3,7 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
 pkgver=8.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
 url="https://www.onlyoffice.com/desktop.aspx"
@@ -28,11 +28,13 @@ makedepends=(
     ninja
     # grunt
     jdk11-openjdk
+    libxml2-legacy # V8 toolchain
 )
 optdepends=('libreoffice: for OpenSymbol fonts'
             'otf-takao: for japanese Takao fonts'
             'ttf-ms-fonts: for Microsoft fonts'
-            'gst-plugins-good: for playing embedded video files')
+            'gst-plugins-good: for playing embedded video files'
+            'gst-libav: for playing embedded video files')
 conflicts=(onlyoffice-bin onlyoffice-git)
 options=(
     '!emptydirs'
@@ -88,7 +90,7 @@ sha256sums=('4d987160ccc966f4049be3f8c2dcf5a9f5d3b941f880408a80772e04bb593b2e'
             'cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe'
             '8cd5a305b9ce85066094963a5d28ad221f9598b9e98e569bf47c61f570c2988b'
             '26127ef7a53f1343b36bd5da678663b78dbef81f9d22ed416555e853f55dfc4c'
-            '36e4855625bf3eaab293208478492393fb4e8f0f1076fac06df56ca828319ffc'
+            '9f570942c7467c800acb4b891f7739a1fcd497dbb2d30b04005e0b6a38da6e4d'
             'a4f2502acfdc48d3daad5ed166c1cd15cb0595a4d5018f22d9390f73f25dd8c6'
             'e9d56d030039ad72e89dc48877f7fccaeac4cfa5ff584833849be2601fca5fb7'
             'bdcf095fd46fb47f2992510078c46cef2b0084000ff4a0c4f956efb0db7e4d57'
