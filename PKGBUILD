@@ -2,8 +2,8 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=8.3.3
-pkgrel=3
+pkgver=9.0.0
+pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
 url="https://www.onlyoffice.com/desktop.aspx"
@@ -42,7 +42,7 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v8.3.3.23
+_tag=v9.0.0.172
 _icu_major=58
 _icu_minor=3
 source=(
@@ -71,21 +71,22 @@ source=(
     "0003-use-QT_VERSION-env-instead-of-guessing.patch"
     "0004-Only-build-tar.patch"
     "0001-Fix-boost-module-import.patch"
+    "0001-Disable-static-linking-of-libstdc.patch"
     "use-fpermissive.diff"
     "fix-glib-qt-macro-collision.diff"
     "fix-limits-include.diff"
 )
-sha256sums=('4d987160ccc966f4049be3f8c2dcf5a9f5d3b941f880408a80772e04bb593b2e'
-            '016401fe7c32d6f1c8499e03300d4f2c9e35b80a4c8f272f5eef37644a99a802'
-            '996e04f7fa654b20ada92244cd1944060e5cc7edf5c17b8c0d3a408c02ff3485'
-            '5fce3ea026434e53f5b66a9b56377d7eb8226c10f09cfd6a468f7a98d80eeba6'
-            'a4a962604c085ff982d06d3b6b03763ada18ce27364742ea63c8754f85d4cd0f'
-            '21b75f1026838e88a663fc429239db67d0357342c48eac64f89b72cdc2e0f8e5'
-            'ce7d8ee17bcef34c4f7c6559ec9d76d22272fe80213cca8c9fa44fcc156c87f7'
-            'eb2c5dd0b5df70b9a393f0d0ea12bf3cfbcf10864ad972ed1b24fea22be62441'
-            'c1e10fa642f849fe5192f899ac73e180d8428338fecc4345201f48538de5ec3a'
+sha256sums=('26d470583b811cd06cfd30092e1eaf4e4c5d3a60c6885b46203a6f7a7dd57e7e'
+            '6104855d4860af52f7433b4b54f71f9894b33038877d13e7141a0ae2dea7ce0e'
+            '8ac3951a583c346cad9b55ef6d8432b18c3d3beccb6f5303080639ac5cee18eb'
+            '92adbe2a2a42dccf88e1aa0d23d057dc2977ed2a0c4f59f410c9ea5dd7d25b5d'
+            '62dc945a78f38ab87e9d0a1a0cfefe0ddee29ba9de4e48468f7047d0aac4e645'
+            '2dab94e9108d901a16169f6efd887fa5bd89856d8ee906a7a5920e362eab1490'
+            '1ce9bf73e502031c1bf79d9e7d334f9d92cbed947fab5eddec31cb682f704ca8'
+            'd1092b0f13f11b4f5fe899134755d433db22ccafcbac03e31b7facc8936f9262'
+            'd01c78af810fff63737f9012523c92f6f338ae1ae7019dc64a7de0414962540a'
             '55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720'
-            '8c2317192e91192eee56dff15bd1cfa901c8f7290e2e09c402ea3886e3090350'
+            '1a9ddf334ee246bcd4f412475f91dd2a70408521998f358dbcae18976f861e56'
             'SKIP'
             'cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe'
             '8cd5a305b9ce85066094963a5d28ad221f9598b9e98e569bf47c61f570c2988b'
@@ -96,11 +97,22 @@ sha256sums=('4d987160ccc966f4049be3f8c2dcf5a9f5d3b941f880408a80772e04bb593b2e'
             'bdcf095fd46fb47f2992510078c46cef2b0084000ff4a0c4f956efb0db7e4d57'
             '0f7acc17b78eaeb338f098088ee11356045a53af6698c79ada45fa261c8d18fe'
             '95e107a7c2a895866e8a1d4c89bb4dbed50027fff9e5b9ab513c556537554eef'
+            'b3e040f0551dc469d91d23487e05bdb7123d2a3e50c5180c44be868a6f42ecbf'
             '222dab12468f27b2bc1cc098ad2e4ca5bff8df845939f5cba2efff2165eafbcd'
             'bd655f04eb044f19da779911eb7ad6fd13c899a659720fbcf08f38194365669c'
             'cb87384ce721ac15a82d254efe8662be0eb9011c122edfcb1caa07194fbae697')
 
+
+_set_flags() {
+    # Set CXX standard to gnu++11. It appears that upstream forgot to do so in
+    # some places.
+    if [[ ! "-std=" =~ "$CXXFLAGS" ]]; then
+        CXXFLAGS="$CXXFLAGS -std=gnu++11"
+    fi
+}
+
 prepare() {
+    _set_flags
     for _module in core desktop-{apps,sdk} dictionaries sdkjs{,-forms} \
         web-apps build_tools document-templates core-fonts
     do
@@ -159,7 +171,9 @@ EOF
         v8/third_party/llvm-build/Release+Asserts/lib/libstdc++.so.6
     patch -Np1 -d v8 < "$srcdir/v8-89-fix-cstdint.diff"
 
+    # We need to apply the patches after the update
     cd "$srcdir"
+    patch -Np1 -d core < 0001-Disable-static-linking-of-libstdc.patch
     # Fix some compile error
     patch -Np1 -d core < use-fpermissive.diff
     dos2unix core/Common/OfficeFileFormatChecker2.cpp
@@ -183,6 +197,7 @@ EOF
 }
 
 build() {
+    _set_flags
     cd build_tools
     local qt_ver="$(pacman -Q qt5-base | awk '{print $2}')"
     export QT_VERSION="${qt_ver//+*}"
