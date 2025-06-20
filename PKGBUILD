@@ -3,7 +3,7 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
 url="https://www.onlyoffice.com/desktop.aspx"
@@ -72,6 +72,7 @@ source=(
     "0004-Only-build-tar.patch"
     "0001-Fix-boost-module-import.patch"
     "0001-Disable-static-linking-of-libstdc.patch"
+    "0001-Dynamically-link-libstdc-in-icu.patch"
     "use-fpermissive.diff"
     "fix-glib-qt-macro-collision.diff"
     "fix-limits-include.diff"
@@ -98,6 +99,7 @@ sha256sums=('26d470583b811cd06cfd30092e1eaf4e4c5d3a60c6885b46203a6f7a7dd57e7e'
             '0f7acc17b78eaeb338f098088ee11356045a53af6698c79ada45fa261c8d18fe'
             '95e107a7c2a895866e8a1d4c89bb4dbed50027fff9e5b9ab513c556537554eef'
             'b3e040f0551dc469d91d23487e05bdb7123d2a3e50c5180c44be868a6f42ecbf'
+            'a3561d1f18a61c404c8f9f9ed51484b2e19e3caaee86b71b1cabe3c7ccd0053a'
             '222dab12468f27b2bc1cc098ad2e4ca5bff8df845939f5cba2efff2165eafbcd'
             'bd655f04eb044f19da779911eb7ad6fd13c899a659720fbcf08f38194365669c'
             'cb87384ce721ac15a82d254efe8662be0eb9011c122edfcb1caa07194fbae697')
@@ -106,7 +108,7 @@ sha256sums=('26d470583b811cd06cfd30092e1eaf4e4c5d3a60c6885b46203a6f7a7dd57e7e'
 _set_flags() {
     # Set CXX standard to gnu++11. It appears that upstream forgot to do so in
     # some places.
-    if [[ ! "-std=" =~ "$CXXFLAGS" ]]; then
+    if [[ ! "$CXXFLAGS" =~ '-std=' ]]; then
         CXXFLAGS="$CXXFLAGS -std=gnu++11"
     fi
 }
@@ -140,6 +142,8 @@ prepare() {
     patch -Np1 -i ../0003-use-QT_VERSION-env-instead-of-guessing.patch
     # Don't build debs/rpm/..
     patch -Np1 -i ../0004-Only-build-tar.patch
+    # Dyn linking system libs for vendored ICU
+    patch -Np1 -i ../0001-Dynamically-link-libstdc-in-icu.patch
     # Use https when download CEF
     sed -i 's|http://|https://|' ./scripts/core_common/modules/cef.py
 
