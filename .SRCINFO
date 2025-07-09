@@ -1,7 +1,7 @@
 pkgbase = onlyoffice
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
-	pkgver = 9.0.0
-	pkgrel = 2
+	pkgver = 9.0.3
+	pkgrel = 1
 	url = https://www.onlyoffice.com/desktop.aspx
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -45,17 +45,17 @@ pkgbase = onlyoffice
 	conflicts = onlyoffice-git
 	options = !emptydirs
 	options = !lto
-	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v9.0.0
-	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v9.0.0.172
-	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v9.0.0.172
-	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v9.0.0.172
-	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v9.0.0.172
-	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v9.0.0.172
-	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v9.0.0.172
-	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v9.0.0.172
-	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v9.0.0.172
-	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v9.0.0.172
-	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v9.0.0.172
+	source = git+https://github.com/ONLYOFFICE/DesktopEditors#tag=v9.0.3
+	source = onlyoffice-core::git+https://github.com/ONLYOFFICE/core#tag=v9.0.3.30
+	source = onlyoffice-desktop-apps::git+https://github.com/ONLYOFFICE/desktop-apps#tag=v9.0.3.30
+	source = onlyoffice-desktop-sdk::git+https://github.com/ONLYOFFICE/desktop-sdk#tag=v9.0.3.30
+	source = onlyoffice-dictionaries::git+https://github.com/ONLYOFFICE/dictionaries#tag=v9.0.3.30
+	source = onlyoffice-sdkjs::git+https://github.com/ONLYOFFICE/sdkjs#tag=v9.0.3.30
+	source = onlyoffice-sdkjs-forms::git+https://github.com/ONLYOFFICE/sdkjs-forms#tag=v9.0.3.30
+	source = onlyoffice-web-apps::git+https://github.com/ONLYOFFICE/web-apps#tag=v9.0.3.30
+	source = onlyoffice-build_tools::git+https://github.com/ONLYOFFICE/build_tools#tag=v9.0.3.30
+	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v9.0.3.30
+	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v9.0.3.30
 	source = onlyoffice.github.io::git+https://github.com/ONLYOFFICE/onlyoffice.github.io
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773
 	source = git+https://github.com/v8/v8#tag=9.0.257.43
@@ -71,15 +71,15 @@ pkgbase = onlyoffice
 	source = use-fpermissive.diff
 	source = fix-glib-qt-macro-collision.diff
 	source = fix-limits-include.diff
-	sha256sums = 26d470583b811cd06cfd30092e1eaf4e4c5d3a60c6885b46203a6f7a7dd57e7e
-	sha256sums = 6104855d4860af52f7433b4b54f71f9894b33038877d13e7141a0ae2dea7ce0e
-	sha256sums = 8ac3951a583c346cad9b55ef6d8432b18c3d3beccb6f5303080639ac5cee18eb
-	sha256sums = 92adbe2a2a42dccf88e1aa0d23d057dc2977ed2a0c4f59f410c9ea5dd7d25b5d
+	sha256sums = e5c810bf81688fdb9d71eb7cd6a139a2bdd9592cf61f9c517a56e3f6530f2b19
+	sha256sums = 651bbe01943335a3228b07756646f17ad61f3eb3615c1ebf3c23166425f68fbe
+	sha256sums = 9fb2ffd4516e0d4e7f1f058946f46c2fa6743eb84c38acd22ecfb2602640668f
+	sha256sums = c2ee24d095fc11514b39e2682132324117740e17c53d88e38a47b72ad6261ae0
 	sha256sums = 62dc945a78f38ab87e9d0a1a0cfefe0ddee29ba9de4e48468f7047d0aac4e645
-	sha256sums = 2dab94e9108d901a16169f6efd887fa5bd89856d8ee906a7a5920e362eab1490
-	sha256sums = 1ce9bf73e502031c1bf79d9e7d334f9d92cbed947fab5eddec31cb682f704ca8
-	sha256sums = d1092b0f13f11b4f5fe899134755d433db22ccafcbac03e31b7facc8936f9262
-	sha256sums = d01c78af810fff63737f9012523c92f6f338ae1ae7019dc64a7de0414962540a
+	sha256sums = 728d8689ceea6f7acdd24f99f381dbdeedc2fbd88c29322ed5bbc426f6f300a6
+	sha256sums = ee0f75fde0a6e5d6dcfe164f521da4dd2d3ca451605d801e0efa4a12260d8e13
+	sha256sums = 0329393fac66778155db888e3c1a9183bc10414a3b440f82b45b423a2163d90c
+	sha256sums = b8a46e2b624dd5835dfd699958b189bd20db304eb03e5bcbb4386a0b4bfb6d1c
 	sha256sums = 55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720
 	sha256sums = 1a9ddf334ee246bcd4f412475f91dd2a70408521998f358dbcae18976f861e56
 	sha256sums = SKIP

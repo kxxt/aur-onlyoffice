@@ -2,8 +2,8 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=9.0.0
-pkgrel=2
+pkgver=9.0.3
+pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
 url="https://www.onlyoffice.com/desktop.aspx"
@@ -42,7 +42,7 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v9.0.0.172
+_tag=v9.0.3.30
 _icu_major=58
 _icu_minor=3
 source=(
@@ -77,15 +77,15 @@ source=(
     "fix-glib-qt-macro-collision.diff"
     "fix-limits-include.diff"
 )
-sha256sums=('26d470583b811cd06cfd30092e1eaf4e4c5d3a60c6885b46203a6f7a7dd57e7e'
-            '6104855d4860af52f7433b4b54f71f9894b33038877d13e7141a0ae2dea7ce0e'
-            '8ac3951a583c346cad9b55ef6d8432b18c3d3beccb6f5303080639ac5cee18eb'
-            '92adbe2a2a42dccf88e1aa0d23d057dc2977ed2a0c4f59f410c9ea5dd7d25b5d'
+sha256sums=('e5c810bf81688fdb9d71eb7cd6a139a2bdd9592cf61f9c517a56e3f6530f2b19'
+            '651bbe01943335a3228b07756646f17ad61f3eb3615c1ebf3c23166425f68fbe'
+            '9fb2ffd4516e0d4e7f1f058946f46c2fa6743eb84c38acd22ecfb2602640668f'
+            'c2ee24d095fc11514b39e2682132324117740e17c53d88e38a47b72ad6261ae0'
             '62dc945a78f38ab87e9d0a1a0cfefe0ddee29ba9de4e48468f7047d0aac4e645'
-            '2dab94e9108d901a16169f6efd887fa5bd89856d8ee906a7a5920e362eab1490'
-            '1ce9bf73e502031c1bf79d9e7d334f9d92cbed947fab5eddec31cb682f704ca8'
-            'd1092b0f13f11b4f5fe899134755d433db22ccafcbac03e31b7facc8936f9262'
-            'd01c78af810fff63737f9012523c92f6f338ae1ae7019dc64a7de0414962540a'
+            '728d8689ceea6f7acdd24f99f381dbdeedc2fbd88c29322ed5bbc426f6f300a6'
+            'ee0f75fde0a6e5d6dcfe164f521da4dd2d3ca451605d801e0efa4a12260d8e13'
+            '0329393fac66778155db888e3c1a9183bc10414a3b440f82b45b423a2163d90c'
+            'b8a46e2b624dd5835dfd699958b189bd20db304eb03e5bcbb4386a0b4bfb6d1c'
             '55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720'
             '1a9ddf334ee246bcd4f412475f91dd2a70408521998f358dbcae18976f861e56'
             'SKIP'
