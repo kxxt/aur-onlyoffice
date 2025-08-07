@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=9.0.3
+pkgver=9.0.4
 pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents "
 arch=(x86_64)
@@ -42,7 +42,7 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v9.0.3.30
+_tag=v9.0.4.52
 _icu_major=58
 _icu_minor=3
 source=(
@@ -77,15 +77,15 @@ source=(
     "fix-glib-qt-macro-collision.diff"
     "fix-limits-include.diff"
 )
-sha256sums=('e5c810bf81688fdb9d71eb7cd6a139a2bdd9592cf61f9c517a56e3f6530f2b19'
-            '651bbe01943335a3228b07756646f17ad61f3eb3615c1ebf3c23166425f68fbe'
-            '9fb2ffd4516e0d4e7f1f058946f46c2fa6743eb84c38acd22ecfb2602640668f'
-            'c2ee24d095fc11514b39e2682132324117740e17c53d88e38a47b72ad6261ae0'
+sha256sums=('2d097cf7bbd6165e01a97fc3ac3b7163e81abefe7f264a9fbf338a5d54bcb0b2'
+            '0aa944aa8a3df51c13daf67f73be670241d66a0e6a0441bce88b5c7853df07ab'
+            'c06cd8e3cc5cf4acabb51961fa91f591f242839d3e9ef27d0e44e7fe7bb59d4b'
+            '73fe89a6245ba8f7bd5875e37eb5bdeb498c46e3c5be6357d2d4a7061906f499'
             '62dc945a78f38ab87e9d0a1a0cfefe0ddee29ba9de4e48468f7047d0aac4e645'
-            '728d8689ceea6f7acdd24f99f381dbdeedc2fbd88c29322ed5bbc426f6f300a6'
-            'ee0f75fde0a6e5d6dcfe164f521da4dd2d3ca451605d801e0efa4a12260d8e13'
-            '0329393fac66778155db888e3c1a9183bc10414a3b440f82b45b423a2163d90c'
-            'b8a46e2b624dd5835dfd699958b189bd20db304eb03e5bcbb4386a0b4bfb6d1c'
+            '1714e7ff8f039c9abd70ec5754fc66e5dc388abd65df4a61b1b73c10dbe88cb7'
+            '3a19ac5337e1d5bad2196365b2e26e8b7b7966fe1f64bc84a0fb32b34f226f56'
+            '7211c48754e44c067f775cfe7185f29c4e8d0decdd420f0c0925008d96168405'
+            '560d323f20ca8f4916944dbbae82672945392e68a9530e6ddb97828076f99a33'
             '55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720'
             '1a9ddf334ee246bcd4f412475f91dd2a70408521998f358dbcae18976f861e56'
             'SKIP'
@@ -221,14 +221,15 @@ package() {
     cd build_tools
     ./make_package.py -P linux_x86_64 -T desktop -V "$pkgver" -B "$pkgrel"
     cd ../desktop-apps/win-linux/package/linux/tar
-    tar xf onlyoffice-desktopeditors-"$pkgver"-"$pkgrel"-"$CARCH".tar.xz
+    tar xf onlyoffice-desktopeditors-pro-"$pkgver"-"$pkgrel"-"$CARCH".tar.xz
     rm -f *.tar.xz
 
     install -d "$pkgdir"/opt/onlyoffice
     cp -r usr "$pkgdir"
     chmod +x "$pkgdir"/usr/bin/*
     # Symlink for backward compatibility
-    ln -s onlyoffice-desktopeditors "$pkgdir"/usr/bin/desktopeditors
+    ln -s onlyoffice-desktopeditors-pro "$pkgdir"/usr/bin/desktopeditors
+    ln -s onlyoffice-desktopeditors-pro "$pkgdir"/usr/bin/onlyoffice-desktopeditors
     cp -r opt "$pkgdir"
 
     # We are using system Qt5 and icu
