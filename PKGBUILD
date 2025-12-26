@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=9.2.0
+pkgver=9.2.1
 pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents"
 arch=(x86_64)
@@ -45,7 +45,7 @@ options=(
 )
 _url=https://github.com/ONLYOFFICE
 # The tag used for sumodules
-_tag=v9.2.0.102
+_tag=v9.2.1.43
 # ICU: scripts/core_common/modules/icu.py
 _icu_major=74
 _icu_minor=2
@@ -84,15 +84,15 @@ source=(
     system-heif{,-0}.diff
     "fix-QDesktopWidget-include.diff"
 )
-sha256sums=('44e133e174426fbf7b998e379edc73740cb5ea55a370518181f14cbfb9996ba3'
-            'a0f51ae6ebe0bdbc0eb561ad4b1fc238172ba69c71a59628573cdf29564e8ef5'
-            '100d1b25f316272539376754c1393faf70928074a6e83d5e44cc0c7589d670e0'
-            '1de7e1b133ca497f914a48bde13d04f54da220d7954076d6b1006c7898058b2e'
+sha256sums=('5a4ef3ce5a6cbe56446017e235006342c64343dc680539966b7723e184a1d1e4'
+            'ca41e1a699f6511d74052b19126046401262adc7b08c07396890abe6ade23dbf'
+            'eca52ce3bc9fa13ca05262515dfcc23be118d301ac895bd422e098c00a1479dd'
+            '5503ed4ad138c1cef42b1ce732316a981c2aaf84f1d49b0787c3d36e7901e0b1'
             '62dc945a78f38ab87e9d0a1a0cfefe0ddee29ba9de4e48468f7047d0aac4e645'
-            '654d33d3163d95b33eb20cb1ea8afe0002faeccf7387e6e5689ecb99f4ea0ebe'
-            '486b5d37ecbbd68d0b3724724ee0bb2146b39cadd8a5e72d498ef8ddf733ba16'
-            'ee186d380736673fda48a14e48c6d3e51185dc9729b8ae555ad6193533b7577c'
-            '444c596bef0fffdb102ce3dee819a8f99ce3817bd4405adfbcd63082a4f3024b'
+            '3dafdfa485104b95eb48449fba58d8f5ade8ae48faace0ed9e06dcf64ce90179'
+            'bf07e092f73a3c82ce00552ae6258c39e6da6edb974a5690076ca470e2bdb5f0'
+            '78120e5b0624175d12c0f97d70afb272839a74f4a486ef4c9c49c20e6f7849e3'
+            '183cb0099fb1c5ad3f206898a2b11148976d03f4d7b3ae216828fe796ab47c3e'
             '55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720'
             '1a9ddf334ee246bcd4f412475f91dd2a70408521998f358dbcae18976f861e56'
             'SKIP'
@@ -171,6 +171,9 @@ prepare() {
     cd "$srcdir/"
     mv depot_tools core/Common/3dParty/v8_89/
     cd core/Common/3dParty/v8_89/
+    # Onlyofffice build script checks it and when it does not match,
+    # it would delete our v8 and deopt_tools and try to clone them again :(
+    echo -n "v8_version_1" > v8.data
     cat >.gclient <<EOF
 solutions = [
   {
@@ -184,6 +187,7 @@ solutions = [
 ]
 EOF
     export PATH="$(pwd)/depot_tools:$PATH" DEPOT_TOOLS_UPDATE=0
+    ensure_bootstrap
     # ref: build_tools/scripts/core_common/modules/v8_89.py
     gclient sync --force
     # V8 use system libstdc++
